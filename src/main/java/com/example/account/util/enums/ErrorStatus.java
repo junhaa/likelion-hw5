@@ -11,8 +11,8 @@ public enum ErrorStatus implements BaseCode {
 
 	// member
 
-	_MEMBER_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER4001", "존재하지 않는 회원입니다."),
-	_PASSWORD_INVAILD(HttpStatus.BAD_REQUEST, "MEMBER4002", "비밀번호가 일치하지 않습니다.");
+	_MEMBER_NOT_EXIST(HttpStatus.NOT_FOUND, "MEMBER4001", "존재하지 않는 회원입니다."),
+	_PASSWORD_INVAILD(HttpStatus.UNAUTHORIZED, "MEMBER4002", "비밀번호가 일치하지 않습니다.");
 
 
 	private final HttpStatus httpStatus;
