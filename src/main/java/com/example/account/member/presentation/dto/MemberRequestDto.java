@@ -11,7 +11,7 @@ public class MemberRequestDto {
 
 	@Getter
 	@Setter
-	public static class SignupRequestDto{
+	public static class SignupRequestDto {
 		@NotBlank(message = "이메일을 입력해주세요.")
 		@Email(message = "이메일 형식을 맞춰주세요.")
 		private String email;
@@ -27,6 +27,17 @@ public class MemberRequestDto {
 		@NotBlank(message = "비밀번호를 입력해주세요.")
 		@Size(min = 8, message = "비밀번호는 최소 8자 이상이어야 합니다.")
 		@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*()_+={};:,<.>]).{8,}$", message = "비밀번호는 영어, 숫자, 특수문자를 포함해야 합니다.")
+		private String password;
+	}
+
+	@Getter
+	@Setter
+	public static class LoginRequestDto {
+
+		@NotBlank(message = "아이디를 입력해주세요.")
+		private String userId;
+
+		@NotBlank(message = "비밀번호를 입력해주세요.")
 		private String password;
 	}
 

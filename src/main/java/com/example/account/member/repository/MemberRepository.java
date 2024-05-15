@@ -10,5 +10,5 @@ import com.example.account.member.entity.Member;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-
+	Optional<Member> findByUserId(String userId);
 }

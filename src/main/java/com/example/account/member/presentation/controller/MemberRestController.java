@@ -31,5 +31,10 @@ public class MemberRestController {
 			.body(CustomApiResponse.createSuccess(HttpStatus.CREATED.value(), null, "회원가입에 성공하였습니다."));
 	}
 
+	@PostMapping("/login")
+	public CustomApiResponse<?> login(@Valid @RequestBody MemberRequestDto.LoginRequestDto request){
+		memberQueryService.login(request);
+		return CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "로그인에 성공하였습니다.");
+	}
 
 }
