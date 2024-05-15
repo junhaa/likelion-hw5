@@ -4,6 +4,8 @@ import com.example.account.util.response.CustomApiResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import java.util.stream.Collectors;
+
+import org.apache.coyote.Response;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(CustomApiResponse.createFailWithoutData(HttpStatus.BAD_REQUEST.value(), errorMessage));
+    }
+
+    @ExceptionHandler(GeneralException.class)
+    public ResponseEntity<CustomApiResponse<?>> handleGeneralException(GeneralException e){
+        return ResponseEntity
+            .status(e.getHttpStatus())
+            .body(CustomApiResponse.createFailWithoutData(e.getHttpStatus().value(), e.getMessage()));
     }
 
 }
