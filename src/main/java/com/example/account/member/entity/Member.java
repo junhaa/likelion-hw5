@@ -26,10 +26,10 @@ public class Member extends BaseEntity {
 	private Long id;
 
 	@Column(name = "user_id", nullable = false)
-	private Long userId;
+	private String userId;
 
 	@Column(name = "password", nullable = false)
-	private Long password;
+	private String password;
 
 	@Column(name = "email", nullable = false)
 	private String email;
