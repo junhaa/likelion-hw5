@@ -5,4 +5,5 @@ import com.example.account.member.presentation.dto.MemberRequestDto;
 
 public interface MemberCommandService {
 	Member join(MemberRequestDto.SignupRequestDto request);
+	void withdraw(String userId);
 }

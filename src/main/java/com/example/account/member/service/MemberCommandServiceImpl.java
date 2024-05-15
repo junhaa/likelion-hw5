@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.account.member.converter.MemberConverter;
 import com.example.account.member.entity.Member;
+import com.example.account.member.exception.MemberNotExistException;
 import com.example.account.member.presentation.dto.MemberRequestDto;
 import com.example.account.member.repository.MemberRepository;
 
@@ -20,5 +21,11 @@ public class MemberCommandServiceImpl implements MemberCommandService{
 	@Override
 	public Member join(MemberRequestDto.SignupRequestDto request) {
 		return memberRepository.save(MemberConverter.toMember(request));
+	}
+
+	@Override
+	public void withdraw(String userId){
+		Member member = memberRepository.findByUserId(userId).orElseThrow(() -> new MemberNotExistException());
+		memberRepository.delete(member);
 	}
 }

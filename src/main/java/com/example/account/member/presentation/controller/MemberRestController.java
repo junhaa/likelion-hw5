@@ -2,6 +2,8 @@ package com.example.account.member.presentation.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +37,12 @@ public class MemberRestController {
 	public CustomApiResponse<?> login(@Valid @RequestBody MemberRequestDto.LoginRequestDto request){
 		memberQueryService.login(request);
 		return CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "로그인에 성공하였습니다.");
+	}
+
+	@DeleteMapping("/{userId}/withdraw")
+	public CustomApiResponse<?> withdraw(@PathVariable(name = "userId") String userId){
+		memberCommandService.withdraw(userId);
+		return CustomApiResponse.createSuccess(HttpStatus.OK.value(), null, "회원이 정상적으로 탈퇴되었습니다.");
 	}
 
 }
