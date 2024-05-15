@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<CustomApiResponse<?>> handleGeneralException(GeneralException e){
         return ResponseEntity
             .status(e.getHttpStatus())
-            .body(CustomApiResponse.createFailWithoutData(e.getHttpStatus().value(), e.getMessage()));
+            .body(CustomApiResponse.createFailWithoutData(e.getHttpStatus().value(), e.getErrorReason()));
     }
 
 }
